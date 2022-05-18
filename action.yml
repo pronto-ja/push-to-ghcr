@@ -67,7 +67,7 @@ runs:
           export COMMIT_TAG=${GITHUB_REF:10}
           export COMMIT_TAG=${COMMIT_TAG//v/}
         else
-          export COMMIT_TAG=${{ inputs.image_name }}
+          export COMMIT_TAG=${{ inputs.image_version }}
         fi
 
         echo "Tagging with ${COMMIT_TAG}"
@@ -83,7 +83,7 @@ runs:
         >&0 docker build \
           --file ${{ inputs.dockerfile }} \
           --progress tty \
-          --cache-from ${{ inputs.repository }}/${{ inputs.image_name }}{{ inputs.docker_ver}} \
+          --cache-from ${{ inputs.repository }}/${{ inputs.image_name }}{{ inputs.image_version}} \
           --build-arg BUILDKIT_INLINE_CACHE=1 \
           \
           --build-arg BUILD_DATE=${BUILD_DATE} \
