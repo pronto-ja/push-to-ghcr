@@ -83,7 +83,7 @@ runs:
         >&0 docker build \
           --file ${{ inputs.dockerfile }} \
           --progress tty \
-          --cache-from ${{ inputs.repository }}/${{ inputs.image_name }}{{ inputs.image_version}} \
+          --cache-from ${{ inputs.repository }}/${{ inputs.image_name }}${{ inputs.image_version }} \
           --build-arg BUILDKIT_INLINE_CACHE=1 \
           \
           --build-arg BUILD_DATE=${BUILD_DATE} \
