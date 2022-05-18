@@ -25,10 +25,10 @@ inputs:
     required: true
     default: "latest"
     
-  frontend_env:
-    description: "frontend environment"
+  custom_env:
+    description: "custom environment"
     required: true
-    default: "build-test"
+    default: ""
 
   context:
     description: "A path to the context in which the build will happen, see https://docs.docker.com/engine/reference/commandline/build/"
@@ -88,7 +88,7 @@ runs:
           \
           --build-arg BUILD_DATE=${BUILD_DATE} \
           --build-arg GITHUB_SHA=${GITHUB_SHA} \
-          --build-arg CUSTOM_ENV=${{ inputs.frontend_env }} \
+          --build-arg CUSTOM_ENV=${{ inputs.custom_env }} \
           \
           --tag ${{ inputs.repository }}/${{ inputs.image_name }}:${COMMIT_TAG} \
           --tag docker.io/${{ inputs.image_name }}:${COMMIT_TAG} \
