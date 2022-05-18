@@ -36,9 +36,10 @@ jobs:
 
       # https://github.com/marketplace/actions/push-to-ghcr
       - name: Build and publish a Docker image for ${{ github.repository }}
-        uses: macbre/push-to-ghcr@master
+        uses: pronto-ja/push-to-ghcr@master
         with:
           image_name: ${{ github.repository }}
+          image_version: #this is custom field for prontoja environments. local | test
           github_token: ${{ secrets.GITHUB_TOKEN }}
           # optionally push to the Docker Hub (docker.io)
           # docker_io_token: ${{ secrets.DOCKER_IO_ACCESS_TOKEN }}  # see https://hub.docker.com/settings/security
