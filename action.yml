@@ -59,6 +59,7 @@ runs:
         echo "Using $(docker -v)"
 
         echo "::group::Logging into the GitHub Container registry (ghcr.io) ..."
+        echo "builder user is ${{ github.actor }}"
         echo "${GITHUB_TOKEN}" | docker login ghcr.io -u "${{ github.actor }}" --password-stdin
         echo "::endgroup::"
 
